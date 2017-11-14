@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: discovery-server
+server:
+  port: 8888
+    
+# Eureka discovery server configuration
+eureka:
+  instance:
+    hostname: localhost
+    preferIpAddress: true
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+endpoints:
+  sensitive: false
+

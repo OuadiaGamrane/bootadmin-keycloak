@@ -1,0 +1,18 @@
+info:
+  component: Auto Api
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8888/eureka/
+
+server:
+  port: 8764
+
+insurance:
+    cost : 10.00
+
+logging:
+  level:
+    ROOT: INFO
+    org.springframework.web: DEBUG
