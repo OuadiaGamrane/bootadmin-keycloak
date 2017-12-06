@@ -16,7 +16,7 @@ public class NotifictionControllerImpl implements NotificationController {
     private NotificationService notificationService;
 
     @Override
-    public Callable<List<Notification>> loadNotifications() {
-        return () -> notificationService.loadAllNotifications();
+    public List<Notification> loadNotifications() {
+        return notificationService.loadAllNotifications();
     }
 }

@@ -1,5 +1,5 @@
 info:
-  component: Auto Api
+  component: Notif service
 
 eureka:
   client:

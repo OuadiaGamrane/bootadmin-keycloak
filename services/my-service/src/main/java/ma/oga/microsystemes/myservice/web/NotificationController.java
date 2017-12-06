@@ -14,5 +14,5 @@ import java.util.concurrent.Callable;
 public interface NotificationController {
     @GetMapping
     @ApiOperation(value = "Get list of notifications", notes = "this return a list of some weird notifications")
-    Callable<List<Notification>> loadNotifications();
+    List<Notification> loadNotifications();
 }

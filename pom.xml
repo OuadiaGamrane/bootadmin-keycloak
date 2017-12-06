@@ -8,28 +8,29 @@
     <version>1.0</version>
     <packaging>pom</packaging>
 
-    <name>Microservices</name>
+    <name>Socle Microservices</name>
     <description>Cloud</description>
-
-    <modules>
-        <module>support</module>
-        <module>services</module>
-        <module>api-gateway</module>
-    </modules>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>1.5.8.RELEASE</version>
+        <version>1.5.9.RELEASE</version>
         <relativePath/>
     </parent>
+
+    <modules>
+        <module>support</module>
+        <module>services</module>
+    </modules>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <maven-compiler-plugin.version>3.2</maven-compiler-plugin.version>
         <java.version>1.8</java.version>
-        <spring-cloud.version>Dalston.SR4</spring-cloud.version>
+        <spring-cloud.version>Edgware.RELEASE</spring-cloud.version>
+        <keycloak-adapter-bom.version>3.3.0.Final</keycloak-adapter-bom.version>
+        <docker-plugin.version>1.0.0</docker-plugin.version>
     </properties>
 
     <dependencies>
@@ -66,6 +67,12 @@
                         <encoding>${project.build.sourceEncoding}</encoding>
                     </configuration>
                 </plugin>
+                <plugin>
+                    <groupId>com.spotify</groupId>
+                    <artifactId>docker-maven-plugin</artifactId>
+                    <version>${docker-plugin.version}</version>
+                </plugin>
+
             </plugins>
         </pluginManagement>
 
