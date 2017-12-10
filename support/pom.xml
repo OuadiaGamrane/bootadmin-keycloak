@@ -19,6 +19,6 @@
         <module>config-server</module>
         <module>monitoring-dashboard</module>
         <module>zipkin-server</module>
-        <module>api-gateway</module>
+        <module>gateway</module>
     </modules>
 </project>

@@ -31,6 +31,8 @@
         <spring-cloud.version>Edgware.RELEASE</spring-cloud.version>
         <keycloak-adapter-bom.version>3.3.0.Final</keycloak-adapter-bom.version>
         <docker-plugin.version>1.0.0</docker-plugin.version>
+        <docker.registry>localhost:5000</docker.registry>
+        <skipDocker>true</skipDocker>
     </properties>
 
     <dependencies>
@@ -87,4 +89,14 @@
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>docker-build</id>
+            <properties>
+                <skipDocker>false</skipDocker>
+            </properties>
+        </profile>
+    </profiles>
+
 </project>
