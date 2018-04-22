@@ -87,6 +87,7 @@
                 <configuration>
                     <installProject>false</installProject>
                     <verbose>false</verbose>
+                    <skipTestProject>true</skipTestProject>
 
                     <gitFlowConfig>
                         <productionBranch>master</productionBranch>
