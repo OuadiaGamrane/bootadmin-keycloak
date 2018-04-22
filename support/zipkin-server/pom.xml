@@ -3,14 +3,14 @@
     <parent>
         <groupId>ma.oga</groupId>
         <artifactId>support</artifactId>
-        <version>1.1-SNAPSHOT</version>
+        <version>1.1</version>
     </parent>
 
     <modelVersion>4.0.0</modelVersion>
     <artifactId>zipkin-server</artifactId>
     <packaging>jar</packaging>
     <description>Zipkin Server</description>
-    <version>1.1-SNAPSHOT</version>
+    <version>1.1</version>
 
     <dependencies>
         <dependency>
