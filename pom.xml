@@ -78,13 +78,35 @@
             </plugins>
         </pluginManagement>
 
+
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-release-plugin</artifactId>
-                <version>2.5.3</version>
+                <groupId>com.amashchenko.maven.plugin</groupId>
+                <artifactId>gitflow-maven-plugin</artifactId>
+                <version>1.9.0</version>
                 <configuration>
-                    <goals>deploy</goals>
+                    <installProject>false</installProject>
+                    <verbose>false</verbose>
+
+                    <gitFlowConfig>
+                        <productionBranch>master</productionBranch>
+                        <developmentBranch>dev</developmentBranch>
+                        <releaseBranchPrefix>release/</releaseBranchPrefix>
+                        <hotfixBranchPrefix>hotfix/</hotfixBranchPrefix>
+                        <versionTagPrefix>v</versionTagPrefix>
+                        <origin>origin</origin>
+                    </gitFlowConfig>
+
+                    <commitMessages>
+                        <hotfixStartMessage>- update versions for hotfix</hotfixStartMessage>
+                        <hotfixFinishMessage> - update for next development version</hotfixFinishMessage>
+
+                        <releaseStartMessage> - update versions for release</releaseStartMessage>
+                        <releaseFinishMessage> - update for next development version</releaseFinishMessage>
+
+                        <tagHotfixMessage>- tag hotfix</tagHotfixMessage>
+                        <tagReleaseMessage>- tag release</tagReleaseMessage>
+                    </commitMessages>
                 </configuration>
             </plugin>
         </plugins>
