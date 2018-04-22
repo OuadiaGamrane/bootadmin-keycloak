@@ -83,10 +83,11 @@
             <plugin>
                 <groupId>com.amashchenko.maven.plugin</groupId>
                 <artifactId>gitflow-maven-plugin</artifactId>
-                <version>1.9.0</version>
+                <version>1.7.0</version>
                 <configuration>
                     <installProject>false</installProject>
                     <verbose>false</verbose>
+                    <skipTestProject>true</skipTestProject>
 
                     <gitFlowConfig>
                         <productionBranch>master</productionBranch>
