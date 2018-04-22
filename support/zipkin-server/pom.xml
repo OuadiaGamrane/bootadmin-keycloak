@@ -10,6 +10,7 @@
     <artifactId>zipkin-server</artifactId>
     <packaging>jar</packaging>
     <description>Zipkin Server</description>
+    <version>1.0</version>
 
     <dependencies>
         <dependency>

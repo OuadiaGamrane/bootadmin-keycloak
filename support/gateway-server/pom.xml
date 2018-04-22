@@ -10,6 +10,7 @@
     <artifactId>gateway-server</artifactId>
     <packaging>jar</packaging>
     <description>Cloud gateway</description>
+    <version>1.0</version>
 
     <dependencies>
         <dependency>

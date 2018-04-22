@@ -10,6 +10,7 @@
     <artifactId>discovery-server</artifactId>
     <packaging>jar</packaging>
     <description>Discovery Server Eureka</description>
+    <version>1.0</version>
 
     <dependencies>
         <dependency>
