@@ -5,14 +5,14 @@
     <parent>
         <artifactId>services</artifactId>
         <groupId>ma.oga</groupId>
-        <version>1.0</version>
+        <version>1.1-SNAPSHOT</version>
     </parent>
 
     <artifactId>commons</artifactId>
     <modelVersion>4.0.0</modelVersion>
     <name>services/commons</name>
     <description>Commons</description>
-    <version>1.0</version>
+    <version>1.1-SNAPSHOT</version>
 
     <properties>
         <springfox-swagger-ui.version>2.8.0</springfox-swagger-ui.version>
