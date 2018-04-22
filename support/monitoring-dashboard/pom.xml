@@ -10,6 +10,7 @@
     <artifactId>monitoring-dashboard</artifactId>
     <packaging>jar</packaging>
     <description>Monitoring dashboard</description>
+    <version>1.0</version>
 
     <dependencies>
         <dependency>
