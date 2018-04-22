@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.concurrent.Callable;
 
-@RestController
 public class NotifictionControllerImpl implements NotificationController {
 
     @Autowired

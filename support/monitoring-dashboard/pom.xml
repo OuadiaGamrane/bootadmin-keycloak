@@ -55,7 +55,7 @@
         </dependency>
     </dependencies>
     <properties>
-        <spring-boot-admin-server.version>1.5.4</spring-boot-admin-server.version>
+        <spring-boot-admin-server.version>1.5.7</spring-boot-admin-server.version>
     </properties>
     <build>
         <plugins>

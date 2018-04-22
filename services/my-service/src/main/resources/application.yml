@@ -11,8 +11,26 @@ server:
 
 insurance:
     cost : 10.00
+# Configuration de sécurité
+keycloak:
+  enable-basic-auth: false
+  realm: ebk-realm
+  auth-server-url: http://localhost:8080/auth
+  resource: awb-ee-app
+  bearer-only: true
 
+datasource:
+  db-notification:
+      driver-class-name: org.h2.Driver
+      url: jdbc:h2:mem:db;DB_CLOSE_DELAY=-1
+      username: sa
+      password: sa
+      test-on-borrow: true
+      validation-query: SELECT 1 FROM dual
 logging:
   level:
     ROOT: INFO
     org.springframework.web: DEBUG
+security:
+  basic:
+    enabled: false
