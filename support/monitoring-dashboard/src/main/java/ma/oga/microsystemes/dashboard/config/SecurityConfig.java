@@ -1,6 +1,7 @@
 package ma.oga.microsystemes.dashboard.config;
 
 import de.codecentric.boot.admin.web.client.HttpHeadersProvider;
+import ma.oga.microsystemes.dashboard.filter.CatHandler;
 import org.keycloak.KeycloakPrincipal;
 import org.keycloak.KeycloakSecurityContext;
 import org.keycloak.OAuth2Constants;
@@ -19,18 +20,25 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.http.HttpHeaders;
+import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.authority.mapping.GrantedAuthoritiesMapper;
 import org.springframework.security.core.authority.mapping.SimpleAuthorityMapper;
 import org.springframework.security.core.session.SessionRegistry;
 import org.springframework.security.core.session.SessionRegistryImpl;
+import org.springframework.security.web.access.AccessDeniedHandler;
+import org.springframework.security.web.authentication.session.NullAuthenticatedSessionStrategy;
 import org.springframework.security.web.authentication.session.RegisterSessionAuthenticationStrategy;
 import org.springframework.security.web.authentication.session.SessionAuthenticationStrategy;
 import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
 import java.security.Principal;
 
 @KeycloakConfiguration
@@ -67,8 +75,7 @@ class SecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
 				.authorizeRequests()
 				.antMatchers("/**/*.css", "/admin/img/**", "/admin/third-party/**").permitAll()
 				.antMatchers("/admin").hasRole("ADMIN")
-				.anyRequest().permitAll()
-		;
+				.anyRequest().permitAll().and().exceptionHandling().accessDeniedHandler(new CatHandler());
 	}
 
 	@Bean
@@ -92,37 +99,9 @@ class SecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
 		auth.authenticationProvider(keycloakAuthenticationProvider);
 	}
 
-	// Could be stateless but in our case its not critical
 	@Bean
 	@Override
 	protected SessionAuthenticationStrategy sessionAuthenticationStrategy() {
-		return new RegisterSessionAuthenticationStrategy(buildSessionRegistry());
-	}
-
-	@Bean
-	protected SessionRegistry buildSessionRegistry() {
-		return new SessionRegistryImpl();
-	}
-
-	// allow admin to resolve user
-	@Bean
-	@Scope(scopeName = WebApplicationContext.SCOPE_REQUEST, proxyMode = ScopedProxyMode.TARGET_CLASS)
-	public KeycloakSecurityContext provideKeycloakSecurityContext() {
-
-		ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
-		Principal principal = attributes.getRequest().getUserPrincipal();
-		if (principal == null) {
-			return null;
-		}
-
-		if (principal instanceof KeycloakAuthenticationToken) {
-			principal = Principal.class.cast(KeycloakAuthenticationToken.class.cast(principal).getPrincipal());
-		}
-
-		if (principal instanceof KeycloakPrincipal) {
-			return KeycloakPrincipal.class.cast(principal).getKeycloakSecurityContext();
-		}
-
-		return null;
+		return new NullAuthenticatedSessionStrategy();
 	}
 }

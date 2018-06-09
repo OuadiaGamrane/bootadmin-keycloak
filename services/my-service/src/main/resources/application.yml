@@ -6,6 +6,9 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:8888/eureka/
     enabled: true
+  instance:
+    metadata-map:
+      management.context-path: ${management.context-path}
 
 server:
   port: 8764
@@ -33,6 +36,7 @@ logging:
     org.springframework.web: DEBUG
 
 management:
+  context-path: '/custom-mgmt'
   security:
     roles:
     - ACTUATOR

@@ -4,6 +4,8 @@ server:
 eureka:
   instance:
     leaseRenewalIntervalInSeconds: 10
+    metadata-map:
+      management.context-path: ${management.context-path}
   client:
     registryFetchIntervalSeconds: 5
     serviceUrl:
@@ -24,3 +26,8 @@ keycloak:
   principal-attribute: preferred_username
   use-resource-role-mappings: true
   token-minimum-time-to-live: 30
+management:
+  context-path: '/self-mgmt'
+  security:
+      roles:
+      - ADMIN
