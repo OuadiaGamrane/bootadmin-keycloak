@@ -6,13 +6,9 @@ eureka:
     serviceUrl:
       defaultZone: http://localhost:8888/eureka/
     enabled: false
-
-
 server:
   port: 8764
 
-insurance:
-    cost : 10.00
 # Configuration de sécurité
 keycloak:
   enable-basic-auth: false
