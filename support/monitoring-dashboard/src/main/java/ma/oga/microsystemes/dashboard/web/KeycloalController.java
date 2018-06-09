@@ -1,9 +1,9 @@
-package ma.oga.web;
-
-import javax.servlet.http.HttpServletRequest;
+package ma.oga.microsystemes.dashboard.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import javax.servlet.http.HttpServletRequest;
 
 @Controller
 class KeycloalController {

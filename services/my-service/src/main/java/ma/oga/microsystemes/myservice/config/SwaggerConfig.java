@@ -1,39 +1,30 @@
 package ma.oga.microsystemes.myservice.config;
 
-import static com.google.common.collect.Lists.newArrayList;
-import static springfox.documentation.builders.PathSelectors.ant;
-import static springfox.documentation.schema.AlternateTypeRules.newRule;
-
 import com.fasterxml.classmate.TypeResolver;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.context.request.async.DeferredResult;
-import org.springframework.web.servlet.config.annotation.CorsRegistry;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import springfox.documentation.builders.OAuthBuilder;
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
-import springfox.documentation.builders.ResponseMessageBuilder;
-import springfox.documentation.schema.ModelRef;
 import springfox.documentation.schema.WildcardType;
-import springfox.documentation.service.ApiInfo;
-import springfox.documentation.service.AuthorizationScope;
-import springfox.documentation.service.Contact;
-import springfox.documentation.service.OAuth;
-import springfox.documentation.service.ResourceOwnerPasswordCredentialsGrant;
-import springfox.documentation.service.SecurityReference;
+import springfox.documentation.service.*;
 import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spi.service.contexts.SecurityContext;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger.web.ApiKeyVehicle;
 import springfox.documentation.swagger.web.SecurityConfiguration;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+import static com.google.common.collect.Lists.newArrayList;
+import static springfox.documentation.builders.PathSelectors.ant;
+import static springfox.documentation.schema.AlternateTypeRules.newRule;
 
 @Configuration
 @EnableSwagger2
@@ -97,7 +88,7 @@ public class SwaggerConfig {
                 .grantTypes(
                         newArrayList(
                                 new ResourceOwnerPasswordCredentialsGrant(
-                                        "http://localhost:8080/auth/realms/ebk-realm/protocol/openid-connect/token")
+                                        "http://localhost:8080/auth/realms/oga-management-realm/protocol/openid-connect/token")
                         )
                 )
                 .name("swagger_auth")
@@ -107,10 +98,10 @@ public class SwaggerConfig {
     @Bean
     public SecurityConfiguration securityInfo() {
         return new SecurityConfiguration(
-                "awb-ee-app",
+                "oga-my-app",
                 null,
-                "ebk-realm",
-                "api ee",
+                "oga-management-realm",
+                "app",
                 "Bearer ",
                 ApiKeyVehicle.HEADER,
                 "Authorization",

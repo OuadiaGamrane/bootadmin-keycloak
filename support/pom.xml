@@ -18,7 +18,6 @@
         <module>discovery-server</module>
         <module>config-server</module>
         <module>monitoring-dashboard</module>
-        <module>zipkin-server</module>
         <module>gateway-server</module>
     </modules>
 </project>

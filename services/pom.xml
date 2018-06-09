@@ -17,6 +17,5 @@
 
     <modules>
         <module>my-service</module>
-        <module>commons</module>
     </modules>
 </project>

@@ -5,19 +5,19 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8888/eureka/
+    enabled: true
 
 server:
   port: 8764
 
-insurance:
-    cost : 10.00
 # Configuration de sécurité
 keycloak:
   enable-basic-auth: false
-  realm: ebk-realm
+  realm: oga-management-realm
   auth-server-url: http://localhost:8080/auth
-  resource: awb-ee-app
-  bearer-only: true
+  resource: oga-my-app
+  autodetect-bearer-only: true
+  use-resource-role-mappings: true
 
 datasource:
   db-notification:
@@ -31,6 +31,8 @@ logging:
   level:
     ROOT: INFO
     org.springframework.web: DEBUG
-security:
-  basic:
-    enabled: false
+
+management:
+  security:
+    roles:
+    - ACTUATOR

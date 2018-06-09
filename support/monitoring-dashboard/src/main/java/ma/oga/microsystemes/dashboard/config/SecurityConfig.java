@@ -1,7 +1,6 @@
-package ma.oga.security;
+package ma.oga.microsystemes.dashboard.config;
 
-import java.security.Principal;
-
+import de.codecentric.boot.admin.web.client.HttpHeadersProvider;
 import org.keycloak.KeycloakPrincipal;
 import org.keycloak.KeycloakSecurityContext;
 import org.keycloak.OAuth2Constants;
@@ -32,7 +31,7 @@ import org.springframework.web.context.WebApplicationContext;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
-import de.codecentric.boot.admin.web.client.HttpHeadersProvider;
+import java.security.Principal;
 
 @KeycloakConfiguration
 @EnableConfigurationProperties(KeycloakSpringBootProperties.class)
@@ -93,13 +92,13 @@ class SecurityConfig extends KeycloakWebSecurityConfigurerAdapter {
 		auth.authenticationProvider(keycloakAuthenticationProvider);
 	}
 
+	// Could be stateless but in our case its not critical
 	@Bean
 	@Override
 	protected SessionAuthenticationStrategy sessionAuthenticationStrategy() {
 		return new RegisterSessionAuthenticationStrategy(buildSessionRegistry());
 	}
 
-	// Could be stateless but in our case its not critical
 	@Bean
 	protected SessionRegistry buildSessionRegistry() {
 		return new SessionRegistryImpl();

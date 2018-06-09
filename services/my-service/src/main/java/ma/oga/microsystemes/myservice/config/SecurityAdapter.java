@@ -5,8 +5,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 
-public class SelfCareSecurityAdapter extends
-    AbstractHttpConfigurer<SelfCareSecurityAdapter, HttpSecurity> {
+public class SecurityAdapter extends
+    AbstractHttpConfigurer<SecurityAdapter, HttpSecurity> {
 
   @Override
   public void init(HttpSecurity http) throws Exception {
